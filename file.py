@@ -1,5 +1,6 @@
 import os
 import re
+pip install PyPDF2
 import PyPDF2
 import streamlit as st
 import numpy as np
