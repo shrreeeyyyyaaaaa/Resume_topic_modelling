@@ -7,7 +7,6 @@ import nltk
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
-# Download stopwords if not already
 nltk.download('stopwords')
 
 # Load transformer model
@@ -21,6 +20,7 @@ model = load_model()
 job_roles = {
     "Software Engineer": "programming, development, testing, software, backend, frontend, cloud, APIs",
     "Data Scientist": "machine learning, data analysis, Python, statistics, model building, visualization",
+    "Data Analyst": "Sql, data analysis, Python, powerBI,analytics,tableau,visualization",
     "Marketing Specialist": "marketing, branding, campaigns, content creation, digital marketing, SEO",
     "Financial Analyst": "finance, investment, risk analysis, budgeting, accounting, financial modeling",
     "Sales Executive": "sales, targets, customer acquisition, CRM, relationship management",
