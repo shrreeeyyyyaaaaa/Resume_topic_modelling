@@ -1,0 +1,84 @@
+import os
+import re
+import PyPDF2
+import streamlit as st
+import numpy as np
+import nltk
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
+
+# Download stopwords if not already
+nltk.download('stopwords')
+
+# Load transformer model
+@st.cache_resource
+def load_model():
+    return SentenceTransformer('all-MiniLM-L6-v2')
+
+model = load_model()
+
+# Define job roles and descriptions
+job_roles = {
+    "Software Engineer": "programming, development, testing, software, backend, frontend, cloud, APIs",
+    "Data Scientist": "machine learning, data analysis, Python, statistics, model building, visualization",
+    "Marketing Specialist": "marketing, branding, campaigns, content creation, digital marketing, SEO",
+    "Financial Analyst": "finance, investment, risk analysis, budgeting, accounting, financial modeling",
+    "Sales Executive": "sales, targets, customer acquisition, CRM, relationship management",
+    "Public Relations Officer": "PR, media, reputation management, communication, public speaking",
+    "IT Administrator": "networks, servers, IT support, system admin, cybersecurity, hardware",
+    "UI/UX Designer": "design, Figma, user interface, user experience, wireframes, prototyping",
+    "Civil Engineer": "construction, infrastructure, site management, AutoCAD, structural design",
+    "Business Consultant": "strategy, consulting, business analysis, problem solving, client meetings",
+    "Business Development Manager": "growth, partnerships, revenue, business strategy, stakeholder engagement",
+    "Chef / Culinary Expert": "cooking, kitchen, recipes, cuisine, food preparation, menu planning",
+    "Bank Officer": "banking, loans, customer service, financial products, compliance",
+    "Creative Arts Professional": "art, painting, music, drama, storytelling, creativity"
+}
+
+# Embed job roles once
+@st.cache_data
+def embed_job_roles():
+    return {role: model.encode(desc) for role, desc in job_roles.items()}
+
+job_embeddings = embed_job_roles()
+
+# Extract text from uploaded PDF
+def extract_text_from_pdf(uploaded_file):
+    pdf = PyPDF2.PdfReader(uploaded_file)
+    return " ".join([page.extract_text() for page in pdf.pages if page.extract_text()])
+
+# Preprocess text
+def clean_text(text):
+    text = text.lower()
+    return re.sub(r'[^a-zA-Z\s]', '', text)
+
+# Streamlit app
+def main():
+    st.title("🔍 Resume Job Role Classifier")
+    st.markdown("Upload your resume to get the top 3 matching job roles based on semantic similarity!")
+
+    uploaded_file = st.file_uploader("📄 Upload your Resume (PDF format only)", type=["pdf"])
+
+    if uploaded_file:
+        st.success(f"Uploaded: {uploaded_file.name}")
+        raw_text = extract_text_from_pdf(uploaded_file)
+        st.subheader("📝 Resume Preview:")
+        st.write(raw_text[:1000] + "...")
+
+        cleaned = clean_text(raw_text)
+        resume_embedding = model.encode(cleaned)
+
+        similarities = {
+            role: cosine_similarity([resume_embedding], [embedding])[0][0]
+            for role, embedding in job_embeddings.items()
+        }
+
+        top_roles = sorted(similarities.items(), key=lambda x: x[1], reverse=True)[:3]
+
+        st.subheader("📊 Top 3 Matching Job Roles:")
+        for role, score in top_roles:
+            st.markdown(f"### 🔹 {role}")
+            st.write(f"**Similarity Score:** `{score:.4f}`")
+
+if __name__ == "__main__":
+    main()
