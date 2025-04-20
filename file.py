@@ -54,10 +54,10 @@ def clean_text(text):
 
 # Streamlit app
 def main():
-    st.title("🔍 Resume Job Role Classifier")
-    st.markdown("Upload your resume to get the top 3 matching job roles based on semantic similarity!")
+    st.title("based on Resume- Job Role Classifier")
+    st.markdown("Upload your resume to get the top 3 matching job roles ")
 
-    uploaded_file = st.file_uploader("📄 Upload your Resume (PDF format only)", type=["pdf"])
+    uploaded_file = st.file_uploader("📄 Upload your Resume", type=["pdf"])
 
     if uploaded_file:
         st.success(f"Uploaded: {uploaded_file.name}")
@@ -75,7 +75,7 @@ def main():
 
         top_roles = sorted(similarities.items(), key=lambda x: x[1], reverse=True)[:3]
 
-        st.subheader("📊 Top 3 Matching Job Roles:")
+        st.subheader("📊 Top 3 relevent Job Roles:")
         for role, score in top_roles:
             st.markdown(f"### 🔹 {role}")
             st.write(f"**Similarity Score:** `{score:.4f}`")
