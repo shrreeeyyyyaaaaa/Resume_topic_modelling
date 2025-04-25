@@ -19,30 +19,26 @@ if 'logged_in' not in st.session_state:
 
 # --- Page 1: Login Page ---
 if not st.session_state.logged_in:
-  import streamlit as st
+    # Layout with two columns
+    col1, col2 = st.columns(2)
 
+    with col1:
+        st.image("login_page.png", use_column_width=True)
 
-# Layout with two columns
-col1, col2 = st.columns(2)
-
-with col1:
-    st.image("login_page.png", use_column_width=True)
-
-with col2:
-    st.markdown("<h1 style='text-align: center;'>Resume Based Job Classifier</h1>", unsafe_allow_html=True)
-    st.write("---")
-    
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    
-    if st.button("Login"):
-        if username == "user" and password == "1234":
-            st.success("Login successful! 🎉")
-            st.session_state.logged_in = True
-            st.rerun()
-        else:
-            st.error("Invalid credentials. Please try again.")
-
+    with col2:
+        st.markdown("<h1 style='text-align: center;'>Resume Based Job Classifier</h1>", unsafe_allow_html=True)
+        st.write("---")
+        
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        
+        if st.button("Login"):
+            if username == "user" and password == "1234":
+                st.success("Login successful! 🎉")
+                st.session_state.logged_in = True
+                st.rerun()
+            else:
+                st.error("Invalid credentials. Please try again.")
 
 # --- Page 2: Resume Upload Page ---
 else:
