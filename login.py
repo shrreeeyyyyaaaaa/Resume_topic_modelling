@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-st.set_page_config(page_title="Resume Classifier", layout="centered")
+st.set_page_config(page_title="Resume-Based-Job-Classifier", layout="centered")
 
 # Background + Logo Styling
 st.markdown("""
@@ -51,4 +51,4 @@ if "authenticated" not in st.session_state:
 if not st.session_state.authenticated:
     login()
 else:
-    st.switch_page("file.py")
+    st.switch_page("Resume-Based-Job-Classifier")
