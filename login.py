@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 # Set page configuration
 st.set_page_config(page_title="Resume_Based_Job_Classifier", layout="centered")
 
@@ -49,15 +48,21 @@ st.markdown(
 # Login Card
 st.markdown("<h3 style='color: white;'>🔐 Login</h3>", unsafe_allow_html=True)
 
-
 username = st.text_input("Username", placeholder="Enter your username")
 password = st.text_input("Password", type="password", placeholder="Enter your password")
 
+# Session state for login status
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+
+# Login button
 if st.button("Login"):
     if username == "user" and password == "123":
+        st.session_state.logged_in = True
         st.success("Login successful!")
-        st.switch_page("pages/file.py")
+        st.experimental_rerun()  # Reload the page to switch to file upload page
     else:
         st.error("Invalid username or password")
 
-st.markdown("</div>", unsafe_allow_html=True)
+if st.session_state.logged_in:
+    st.experimental_rerun()  # Automatically rerun to switch to the next page (file.py)
