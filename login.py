@@ -7,7 +7,7 @@ st.set_page_config(page_title="Resume_Based_Job_Classifier", layout="centered")
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://tse3.mm.bing.net/th?id=OIP.tSfk-tsWh0iqY5XtKjIxQgHaEK&pid=Api&P=0&h=180");
+    background-image: url("https://homes4india.com/wp-content/uploads/2023/01/image-39-1024x576.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
