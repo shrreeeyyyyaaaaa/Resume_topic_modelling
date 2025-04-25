@@ -65,4 +65,4 @@ if st.button("Login"):
 
 # After login, redirect to the file upload page
 if st.session_state.logged_in:
-    st.experimental_set_query_params(page="file")  # Set the query parameter for the file page
+    st.query_params(page="file")  # Set the query parameter for the file page
