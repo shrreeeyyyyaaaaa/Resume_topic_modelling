@@ -88,7 +88,7 @@ def clean_text(text):
 # Upload resumes
 uploaded_files = st.file_uploader("📄 Upload Resumes", type=["pdf", "docx", "txt"], accept_multiple_files=True)
 
-if uploaded_files and st.button("🔍 Classify Resumes"):
+if uploaded_files and st.button("Classify Resumes"):
     for uploaded_file in uploaded_files:
         st.divider()
         st.subheader(f"📄 {uploaded_file.name}")
