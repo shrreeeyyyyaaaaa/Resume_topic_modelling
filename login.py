@@ -67,4 +67,4 @@ if st.button("Login"):
 
 # After login, redirect to the file upload page
 if st.session_state.logged_in:
-    st.experimental_rerun()  # Optionally, you can rerun to reload the app
+   
