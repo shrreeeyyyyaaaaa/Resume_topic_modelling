@@ -83,7 +83,7 @@ if not st.session_state.logged_in:
 
 # --- Page 2: Resume Classifier Page ---
 else:
-    st.markdown('<div class="title-style"> Resume Job Role Classifier</div>', unsafe_allow_html=True)
+    st.markdown('<div class="title-style" style="color: white;"> Resume Job Role Classifier</div>', unsafe_allow_html=True)
     st.markdown('<div class="subtitle-style">Upload your resumes below to find the top matching job roles.</div>', unsafe_allow_html=True)
 
     # Load model
