@@ -22,13 +22,13 @@ st.markdown("""
             position: absolute;
             top: 10px;
             right: 10px;
-            width: 50px;
+            width: 100px;
         }
     </style>
 """, unsafe_allow_html=True)
 
 
-st.image("logo.png", width=50)
+st.image("logo.png", width=100)
 
 # Login Form
 def login():
