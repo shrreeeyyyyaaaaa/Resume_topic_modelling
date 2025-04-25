@@ -63,7 +63,7 @@ if st.button("Login"):
     else:
         st.error("Invalid username or password")
 
-# After login, show the next step (upload resume page)
+# Check login status and navigate to next page
 if st.session_state.logged_in:
-    st.session_state.page = "file"  # Track login status in session_state
-    st.write("You are now logged in. Please proceed to the file upload.")
+    st.session_state.page = "file"  
+    st.experimental_rerun()  
