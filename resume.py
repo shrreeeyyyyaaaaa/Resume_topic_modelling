@@ -17,7 +17,7 @@ st.set_page_config(page_title="Resume_Based_Job_Classifier", layout="centered")
 st.markdown("""
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://img.freepik.com/premium-photo/black-office-interior_1029476-21663.jpg");
+    background-image: url("https://static.vecteezy.com/system/resources/previews/019/588/907/original/off-white-watercolor-space-background-soft-paper-texture-grunge-background-beautiful-white-abstract-watercolor-painting-textured-on-white-paper-background-graphics-design-vector.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
