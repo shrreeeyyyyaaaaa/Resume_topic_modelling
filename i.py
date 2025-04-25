@@ -23,7 +23,7 @@ if not st.session_state.logged_in:
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image("login_page.png", use_column_width=True)
+        st.image("login_page.png", use_container_width=True)
 
     with col2:
         st.markdown("<h1 style='text-align: center;'>Resume Based Job Classifier</h1>", unsafe_allow_html=True)
