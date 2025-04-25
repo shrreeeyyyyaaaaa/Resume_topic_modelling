@@ -11,7 +11,7 @@ st.markdown("<h1 style='color:white;'>Resume_Based_Job_Classifier</h1>", unsafe_
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://homes4india.com/wp-content/uploads/2023/01/image-39-1024x576.png");
+    background-image: url("https://img.freepik.com/premium-photo/black-office-interior_1029476-21663.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
