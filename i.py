@@ -10,8 +10,8 @@ from sentence_transformers import SentenceTransformer
 
 nltk.download('stopwords')
 
-# Basic page setup (No background)
-st.set_page_config(page_title="Resume_Based_Job_Classifier", layout="wide")
+# Basic page setup
+st.set_page_config(page_title="Resume Based Job Classifier", layout="wide")
 
 # --- Session management ---
 if 'logged_in' not in st.session_state:
@@ -19,50 +19,41 @@ if 'logged_in' not in st.session_state:
 
 # --- Page 1: Login Page ---
 if not st.session_state.logged_in:
-    # Layout for logo and heading
-    col1, col2 = st.columns([1, 8])
-    with col1:
-        st.image("https://upload.wikimedia.org/wikipedia/commons/4/44/PWC_Logo.png", width=80)  # PWC logo
-    with col2:
-        st.markdown("<h1 style='text-align: center;'>Resume Ranker</h1>", unsafe_allow_html=True)
+    # Logo and Heading
+    st.image("https://upload.wikimedia.org/wikipedia/commons/4/44/PWC_Logo.png", width=50)
+    st.markdown("<h1 style='text-align: left;'>Resume Ranker</h1>", unsafe_allow_html=True)
+    st.write("---")
 
-    # Split page into 2 columns: Left for image, right for login
-    left_col, right_col = st.columns(2)
-
-    with left_col:
-        st.image("https://images.unsplash.com/photo-1605296867304-46d5465a13f1", caption="Login Image", use_column_width=True)  # You can replace URL or use your uploaded image here
-
-    with right_col:
-        username = st.text_input("Username")
-        password = st.text_input("Password", type="password")
-        if st.button("Submit"):
-            if username == "user" and password == "1234":
-                st.success("Login successful!")
-                st.session_state.logged_in = True
-                st.experimental_rerun()
-            else:
-                st.error("Invalid credentials. Please try again.")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+    
+    if st.button("Login"):
+        if username == "user" and password == "1234":
+            st.success("Login successful! 🎉")
+            st.session_state.logged_in = True
+            st.experimental_rerun()
+        else:
+            st.error("Invalid credentials. Please try again.")
 
 # --- Page 2: Resume Upload Page ---
 else:
-    col1, col2 = st.columns([1, 8])
-    with col1:
-        st.image("https://upload.wikimedia.org/wikipedia/commons/4/44/PWC_Logo.png", width=80)
-    with col2:
-        st.markdown("<h1 style='text-align: center;'>Resume Ranker</h1>", unsafe_allow_html=True)
-    
+    # Logo and Heading
+    st.image("https://upload.wikimedia.org/wikipedia/commons/4/44/PWC_Logo.png", width=100)
+    st.markdown("<h1 style='text-align: left;'>Resume Ranker</h1>", unsafe_allow_html=True)
+    st.write("---")
     st.markdown('<h3>Upload your resume(s)</h3>', unsafe_allow_html=True)
 
     # Load model
     @st.cache_resource
     def load_model():
         return SentenceTransformer('all-MiniLM-L6-v2')
+    
     model = load_model()
 
     job_roles = {
         "Software Engineer": "programming, development, testing, software, backend, frontend, cloud, APIs",
         "Data Scientist": "machine learning, data analysis, Python, statistics, model building, visualization",
-        "Data Analyst": "Sql, data analysis, Python, powerBI,analytics,tableau,visualization",
+        "Data Analyst": "SQL, data analysis, Python, PowerBI, analytics, Tableau, visualization",
         "Marketing Specialist": "marketing, branding, campaigns, content creation, digital marketing, SEO",
         "Financial Analyst": "finance, investment, risk analysis, budgeting, accounting, financial modeling",
         "Sales Executive": "sales, targets, customer acquisition, CRM, relationship management",
@@ -80,7 +71,7 @@ else:
     @st.cache_data
     def embed_job_roles():
         return {role: model.encode(desc) for role, desc in job_roles.items()}
-
+    
     job_embeddings = embed_job_roles()
 
     def extract_text(uploaded_file):
@@ -98,7 +89,7 @@ else:
         text = text.lower()
         return re.sub(r'[^a-zA-Z\s]', '', text)
 
-    uploaded_files = st.file_uploader("Upload Resumes", type=["pdf", "docx", "txt"], accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Upload Resumes (PDF, DOCX, or TXT)", type=["pdf", "docx", "txt"], accept_multiple_files=True)
 
     if uploaded_files and st.button("Classify Resumes"):
         for uploaded_file in uploaded_files:
