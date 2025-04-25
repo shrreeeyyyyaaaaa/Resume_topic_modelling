@@ -51,4 +51,4 @@ if "authenticated" not in st.session_state:
 if not st.session_state.authenticated:
     login()
 else:
-    st.switch_page("pages/file.py")
+    st.switch_page("file.py")
