@@ -11,7 +11,7 @@ from sentence_transformers import SentenceTransformer
 nltk.download('stopwords')
 
 # Basic page setup
-st.set_page_config(page_title="Resume Based Job Classifier", layout="Multi-Column")
+st.set_page_config(page_title="Resume Based Job Classifier", layout="wide")
 
 # --- Session management ---
 if 'logged_in' not in st.session_state:
@@ -20,8 +20,8 @@ if 'logged_in' not in st.session_state:
 # --- Page 1: Login Page ---
 if not st.session_state.logged_in:
     # Logo and Heading
-    st.image("https://upload.wikimedia.org/wikipedia/commons/4/44/PWC_Logo.png", width=50)
-    st.markdown("<h1 style='text-align: left;'>Resume Ranker</h1>", unsafe_allow_html=True)
+    st.image("https://www.bing.com/images/search?q=preplaced%20logo%20&FORM=IQFRBA&id=6E1D6C9D4D12DA54C2FD54DC68731756FD045422", width=50)
+    st.markdown("<h1 style='text-align: left;'>Resume Based Job Classifier </h1>", unsafe_allow_html=True)
     st.write("---")
 
     username = st.text_input("Username")
@@ -38,8 +38,8 @@ if not st.session_state.logged_in:
 # --- Page 2: Resume Upload Page ---
 else:
     # Logo and Heading
-    st.image("https://upload.wikimedia.org/wikipedia/commons/4/44/PWC_Logo.png", width=100)
-    st.markdown("<h1 style='text-align: left;'>Resume Ranker</h1>", unsafe_allow_html=True)
+    st.image("https://www.bing.com/images/search?q=preplaced%20logo%20&FORM=IQFRBA&id=6E1D6C9D4D12DA54C2FD54DC68731756FD045422", width=100)
+    st.markdown("<h1 style='text-align: left;'>Resume Based Job Classifier</h1>", unsafe_allow_html=True)
     st.write("---")
     st.markdown('<h3>Upload your resume(s)</h3>', unsafe_allow_html=True)
 
