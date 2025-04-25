@@ -1,3 +1,7 @@
+import streamlit as st
+
+st.set_page_config(page_title="Resume Page", layout="centered")
+st.title("Upload Your Resume")
 import os
 import re
 import PyPDF2
