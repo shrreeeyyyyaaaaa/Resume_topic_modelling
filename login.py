@@ -7,7 +7,7 @@ st.set_page_config(page_title="Login", layout="centered")
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://pin.it/pgIysJBGJ");  
+    background-image: url("https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9");  
     background-size: cover;
 }
 .login-container {
@@ -25,7 +25,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 st.markdown(
     """
     <div style='position: absolute; top: 10px; right: 10px;'>
-        <img src='https://pin.it/3UomMHruJ' width='100'>
+        <img src='logo.png' width='100'>
     </div>
     """,
     unsafe_allow_html=True
