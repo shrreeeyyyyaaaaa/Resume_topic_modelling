@@ -5,7 +5,7 @@ import streamlit as st
 st.set_page_config(page_title="Resume_Based_Job_Classifier", layout="centered")
 
 # Set the text color to black using markdown
-st.markdown("<h1 style='color: black;'>Your Page Title</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: black;'>Resume_Based_Job_Classifier</h1>", unsafe_allow_html=True)
 
 # Background Image (Unsplash example)
 page_bg_img = """
@@ -15,16 +15,6 @@ page_bg_img = """
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.login-card {
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 3rem 2rem;
-    border-radius: 20px;
-    max-width: 400px;
-    margin: 100px auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 input, .stTextInput, .stPasswordInput {
