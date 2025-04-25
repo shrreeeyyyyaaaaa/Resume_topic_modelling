@@ -11,7 +11,7 @@ from sentence_transformers import SentenceTransformer
 nltk.download('stopwords')
 
 # Basic page setup
-st.set_page_config(page_title="Resume Based Job Classifier", layout="wide")
+st.set_page_config(page_title="Resume Based Job Classifier", layout="Multi-Column")
 
 # --- Session management ---
 if 'logged_in' not in st.session_state:
