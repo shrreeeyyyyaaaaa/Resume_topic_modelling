@@ -1,7 +1,11 @@
 import streamlit as st
 
-# Page config
+
+# Set page configuration
 st.set_page_config(page_title="Resume_Based_Job_Classifier", layout="centered")
+
+# Set the text color to black using markdown
+st.markdown("<h1 style='color: black;'>Your Page Title</h1>", unsafe_allow_html=True)
 
 # Background Image (Unsplash example)
 page_bg_img = """
