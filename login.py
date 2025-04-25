@@ -60,10 +60,11 @@ if st.button("Login"):
     if username == "user" and password == "123":
         st.session_state.logged_in = True
         st.success("Login successful!")
-        st.query_params(page="file")  # Set the query parameter for the file page
+        st.session_state.page = "file"  # Track login status in session_state
+        st.experimental_rerun()  # Reload the page to switch to file upload page
     else:
         st.error("Invalid username or password")
 
 # After login, redirect to the file upload page
 if st.session_state.logged_in:
-    st.experimental_rerun() 
+    st.experimental_rerun()  # Optionally, you can rerun to reload the app
