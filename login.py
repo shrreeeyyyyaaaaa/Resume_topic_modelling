@@ -7,7 +7,7 @@ st.set_page_config(page_title="Resume Classifier", layout="centered")
 st.markdown("""
     <style>
         .stApp {
-            background-image: url('back.png');
+            background-image: url('office');
             background-size: cover;
         }
         .login-box {
