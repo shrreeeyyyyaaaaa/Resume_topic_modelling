@@ -19,31 +19,33 @@ if 'logged_in' not in st.session_state:
 
 # --- Page 1: Login Page ---
 if not st.session_state.logged_in:
-    # Logo and Heading
-    st.image("https://www.bing.com/images/search?q=preplaced%20logo%20&FORM=IQFRBA&id=6E1D6C9D4D12DA54C2FD54DC68731756FD045422", width=50)
-    st.markdown("<h1 style='text-align: left;'>Resume Based Job Classifier </h1>", unsafe_allow_html=True)
-    st.write("---")
+    # Layout split into two columns
+    col1, col2 = st.columns(2)
 
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    
-    if st.button("Login"):
-        if username == "user" and password == "1234":
-            st.success("Login successful! 🎉")
-            st.session_state.logged_in = True
-            st.experimental_rerun()
-        else:
-            st.error("Invalid credentials. Please try again.")
+    with col1:
+        st.image("/mnt/data/9fc4f38f-1e50-4aa0-9df5-aee65d82c3ee.png", use_column_width=True)
+
+    with col2:
+        st.markdown("<h1 style='text-align: center;'>Resume Based Job Classifier</h1>", unsafe_allow_html=True)
+        st.write("---")
+        
+        username = st.text_input("Username", key="username")
+        password = st.text_input("Password", type="password", key="password")
+        
+        if st.button("Login"):
+            if username == "user" and password == "1234":
+                st.success("Login successful! 🎉")
+                st.session_state.logged_in = True
+                st.experimental_rerun()
+            else:
+                st.error("Invalid credentials. Please try again.")
 
 # --- Page 2: Resume Upload Page ---
 else:
-    # Logo and Heading
-    st.image("https://www.bing.com/images/search?q=preplaced%20logo%20&FORM=IQFRBA&id=6E1D6C9D4D12DA54C2FD54DC68731756FD045422", width=100)
-    st.markdown("<h1 style='text-align: left;'>Resume Based Job Classifier</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>Resume Based Job Classifier</h1>", unsafe_allow_html=True)
     st.write("---")
     st.markdown('<h3>Upload your resume(s)</h3>', unsafe_allow_html=True)
 
-    # Load model
     @st.cache_resource
     def load_model():
         return SentenceTransformer('all-MiniLM-L6-v2')
