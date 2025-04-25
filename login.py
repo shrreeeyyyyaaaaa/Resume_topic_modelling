@@ -39,7 +39,7 @@ def login():
     if st.button("Submit", type="primary"):
         if username == "user" and password == "123":
             st.session_state.authenticated = True
-            st.switch_page("pages/file.py")
+            st.switch_page("file.py")
         else:
             st.error("Invalid username or password")
     st.markdown('</div>', unsafe_allow_html=True)
