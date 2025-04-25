@@ -77,7 +77,7 @@ if not st.session_state.logged_in:
         if username == "user" and password == "123":
             st.session_state.logged_in = True
             st.success("Login successful! Redirecting...")
-            st.experimental_rerun()  # Force rerun to load next page
+            st.rerun()  # Force rerun to load next page
         else:
             st.error("Invalid username or password")
 
