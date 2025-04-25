@@ -63,7 +63,9 @@ if st.button("Login"):
     else:
         st.error("Invalid username or password")
 
-# Check login status and navigate to next page
+# Check login status and show the next page after login
 if st.session_state.logged_in:
-    st.session_state.page = "file"  
-    st.experimental_rerun()  
+    st.session_state.page = "file"  # Store page status in session state
+    st.markdown("<h3 style='color: white;'>Redirecting...</h3>", unsafe_allow_html=True)
+    st.experimental_rerun()  # Trigger rerun to show the file upload page
+
