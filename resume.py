@@ -37,7 +37,7 @@ button[kind="primary"] {
     padding: 10px 20px;
 }
 .stApp {
-    background-color: #3e2723; /* dark brown */
+    background-color: #3e2723; 
     color: white;
 }
 .title-style {
@@ -84,7 +84,7 @@ if not st.session_state.logged_in:
 # --- Page 2: Resume Classifier Page ---
 else:
     st.markdown('<div class="title-style" style="color: white;"> Resume Job Role Classifier</div>', unsafe_allow_html=True)
-    st.markdown('<div class="subtitle-style"style="color: white>Upload your resumes below to find the top matching job roles.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="subtitle-style" style="color: white"> Upload your resumes below to find the top matching job roles.</div>', unsafe_allow_html=True)
 
     # Load model
     @st.cache_resource
