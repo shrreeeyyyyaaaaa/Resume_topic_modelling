@@ -5,7 +5,7 @@ import streamlit as st
 st.set_page_config(page_title="Resume_Based_Job_Classifier", layout="centered")
 
 # Set the text color to black using markdown
-st.markdown("<h1 style='color: black;'>Resume_Based_Job_Classifier</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color:white;'>Resume_Based_Job_Classifier</h1>", unsafe_allow_html=True)
 
 # Background Image (Unsplash example)
 page_bg_img = """
@@ -47,8 +47,8 @@ st.markdown(
 )
 
 # Login Card
-st.markdown("<div class='login-card'>", unsafe_allow_html=True)
-st.markdown("### 🔐 Login")
+st.markdown("<h3 style='color: white;'>🔐 Login</h3>", unsafe_allow_html=True)
+
 
 username = st.text_input("Username", placeholder="Enter your username")
 password = st.text_input("Password", type="password", placeholder="Enter your password")
